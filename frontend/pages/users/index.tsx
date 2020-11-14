@@ -1,11 +1,12 @@
 import {Users} from 'components/Users'
 import {UsersDocument} from 'components/Users/graphql/users.generated'
 import {initializeApollo} from 'lib/apolloClient'
+import {GetStaticProps} from 'next'
 export default Users
 
 
 // SSG
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
 
   await apolloClient.query({
