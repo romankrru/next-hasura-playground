@@ -1,4 +1,12 @@
 .layout {
+  padding-top: 40px;
   max-width: 940px;
   margin: auto;
+}
+
+.layout nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
 }
