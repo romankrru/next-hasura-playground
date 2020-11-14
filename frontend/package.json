@@ -5,14 +5,27 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "fetch-schema": "npx apollo schema:download --endpoint http://localhost:8080/v1/graphql",
+    "gql-codegen": "graphql-codegen -r dotenv/config --config codegen.yml"
   },
   "dependencies": {
+    "apollo-boost": "^0.4.9",
+    "graphql": "^15.4.0",
+    "graphql-tag": "^2.11.0",
     "next": "10.0.1",
+    "next-with-apollo": "^5.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^2.0.1",
+    "@graphql-codegen/cli": "^1.19.1",
+    "@graphql-codegen/introspection": "^1.18.0",
+    "@graphql-codegen/near-operation-file-preset": "^1.17.12",
+    "@graphql-codegen/typescript": "^1.17.11",
+    "@graphql-codegen/typescript-operations": "^1.17.9",
+    "@graphql-codegen/typescript-react-apollo": "^2.1.1",
     "@types/node": "^14.14.7",
     "@types/react": "^16.9.56",
     "typescript": "^4.0.5"
