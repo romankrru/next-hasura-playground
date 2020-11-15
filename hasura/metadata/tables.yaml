@@ -1,6 +1,14 @@
 - table:
     schema: public
     name: user
+  insert_permissions:
+  - role: public
+    permission:
+      check: {}
+      columns:
+      - firstName
+      - lastName
+      backend_only: false
   select_permissions:
   - role: public
     permission:

@@ -1,20 +1,21 @@
 overwrite: true
 schema: ./schema.json
-documents:
-  - "components/**/*.{ts,tsx}"
-  - "!components/**/*.generated.{ts,tsx}"
+
 generates:
-  generated/index.tsx:
+  generated/index.ts:
     plugins:
       - add:
           placement: 'prepend'
           content: '/* eslint-disable */'
       - typescript
-  src/:
+
+  .components/:
+    documents:
+      - "components/**/!(*.generated).{ts,tsx}"
     preset: near-operation-file
     presetConfig:
       extension: .generated.tsx
-      baseTypesPath: ../generated/index.tsx
+      baseTypesPath: ../generated/index.ts
     config:
       withHooks: true
       withComponent: false
@@ -25,6 +26,18 @@ generates:
           content: '/* eslint-disable */'
       - "typescript-operations"
       - "typescript-react-apollo"
+
   ./schema.json:
     plugins:
       - "introspection"
+
+  .handlers/:
+    documents:
+      - "handlers/**/!(*.generated).ts"
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.ts
+      baseTypesPath: ../generated/index.ts
+    plugins:
+      - typescript-operations
+      - typescript-graphql-request

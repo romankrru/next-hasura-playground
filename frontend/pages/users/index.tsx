@@ -1,12 +1,11 @@
 import {Users} from 'components/Users'
 import {UsersDocument} from 'components/Users/graphql/users.generated'
 import {initializeApollo} from 'lib/apolloClient'
-import {GetStaticProps} from 'next'
+import {/*GetStaticProps,*/ GetServerSideProps} from 'next'
 export default Users
 
-
-// SSG
-export const getStaticProps: GetStaticProps = async () => {
+// SSR
+export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo()
 
   await apolloClient.query({
@@ -17,13 +16,11 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       initialApolloState: apolloClient.cache.extract()
     },
-
-    revalidate: 30,
   }
 }
 
-// SSR
-// export async function getServerSideProps() {
+// SSG
+// export const getStaticProps: GetStaticProps = async () => {
 //   const apolloClient = initializeApollo()
 
 //   await apolloClient.query({
@@ -34,5 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
 //     props: {
 //       initialApolloState: apolloClient.cache.extract()
 //     },
+
+//     revalidate: 30,
 //   }
 // }
