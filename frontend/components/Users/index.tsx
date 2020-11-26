@@ -1,12 +1,11 @@
-import {memo} from 'react'
-import {Layout} from 'components/common/Layout'
-import {useUsersQuery, UsersDocument} from './graphql/users.generated'
-import {useQuery} from '@apollo/client'
+import { Layout } from 'components/common/Layout'
+import { memo } from 'react'
+import { useUsersQuery } from './graphql/users.generated'
 
 export const Users = memo(function Users() {
-  const {data, loading} = useUsersQuery()
+  const { data, loading } = useUsersQuery()
 
-  if(loading) {
+  if (loading) {
     return <div>Loading...</div>
   }
 

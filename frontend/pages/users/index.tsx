@@ -1,7 +1,7 @@
-import {Users} from 'components/Users'
-import {UsersDocument} from 'components/Users/graphql/users.generated'
-import {initializeApollo} from 'lib/apolloClient'
-import {/*GetStaticProps,*/ GetServerSideProps} from 'next'
+import { /* GetStaticProps, */ GetServerSideProps } from 'next'
+import { Users } from 'components/Users'
+import { UsersDocument } from 'components/Users/graphql/users.generated'
+import { initializeApollo } from 'lib/apolloClient'
 export default Users
 
 // SSR
@@ -9,12 +9,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo()
 
   await apolloClient.query({
-    query: UsersDocument
+    query: UsersDocument,
   })
 
   return {
     props: {
-      initialApolloState: apolloClient.cache.extract()
+      initialApolloState: apolloClient.cache.extract(),
     },
   }
 }

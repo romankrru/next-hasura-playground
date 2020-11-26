@@ -1,5 +1,5 @@
+import { ReactNode, memo } from 'react'
 import Link from 'next/link'
-import {memo, ReactNode} from 'react'
 import styles from './assets/styles.module.css'
 
 export const Layout = memo(function Layout(props: {

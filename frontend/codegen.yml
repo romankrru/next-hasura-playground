@@ -44,5 +44,8 @@ generates:
       extension: .generated.ts
       baseTypesPath: ../generated/index.ts
     plugins:
+      - add:
+          placement: 'prepend'
+          content: '/* eslint-disable */'
       - typescript-operations
       - typescript-graphql-request

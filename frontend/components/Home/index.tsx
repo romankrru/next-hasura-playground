@@ -1,6 +1,6 @@
-import {memo} from 'react'
-import Link from 'next/link'
 import { Layout } from 'components/common/Layout'
+import Link from 'next/link'
+import { memo } from 'react'
 
 export const Home = memo(function Home() {
   return <Layout>

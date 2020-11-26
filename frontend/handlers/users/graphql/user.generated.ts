@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as Types from '../../../generated/index';
 
 import { GraphQLClient } from 'graphql-request';

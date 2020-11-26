@@ -7,13 +7,6 @@ let apolloClient: ApolloClient<NormalizedCache>
 
 function createApolloClient() {
   return new ApolloClient({
-    ssrMode: typeof window === 'undefined',
-
-    link: new HttpLink({
-      uri: process.env.NEXT_PUBLIC_GRAPHQL_API_URL, // Server URL (must be absolute)
-      credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-    }),
-
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
@@ -23,6 +16,13 @@ function createApolloClient() {
         },
       },
     }),
+
+    link: new HttpLink({
+      credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+      uri: process.env.NEXT_PUBLIC_GRAPHQL_API_URL, // Server URL (must be absolute)
+    }),
+
+    ssrMode: typeof window === 'undefined',
   })
 }
 
@@ -37,7 +37,7 @@ export function initializeApollo(initialState?: NormalizedCache) {
 
     // Merge the existing cache into data passed from getStaticProps/getServerSideProps
     const data = merge(initialState, existingCache, {
-      arrayMerge: (_source, destination) => destination
+      arrayMerge: (_source, destination) => destination,
     })
 
     // Restore the cache with the merged data

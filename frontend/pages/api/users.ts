@@ -1,2 +1,2 @@
-import {users} from 'handlers/users'
+import { users } from 'handlers/users'
 export default users

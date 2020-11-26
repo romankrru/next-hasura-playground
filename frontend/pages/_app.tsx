@@ -1,8 +1,8 @@
 import 'cross-fetch'
-import type {AppProps} from 'next/app'
-import {ApolloProvider} from '@apollo/react-hooks'
-import {useApollo} from 'lib/apolloClient'
 import '../styles/globals.css'
+import { ApolloProvider } from '@apollo/react-hooks'
+import type { AppProps } from 'next/app'
+import { useApollo } from 'lib/apolloClient'
 
 export default function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState)
