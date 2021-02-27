@@ -1,9 +1,9 @@
+import { FC, memo } from 'react'
 import { Layout } from 'components/common/Layout'
 import Link from 'next/link'
-import { memo } from 'react'
 
-export const Home = memo(function Home() {
-  return <Layout>
+export const Home: FC & {layout?: typeof Layout} = memo(function Home() {
+  return <div>
     <h1>Welcome!</h1>
 
     <nav>
@@ -17,5 +17,7 @@ export const Home = memo(function Home() {
         </li>
       </ul>
     </nav>
-  </Layout>
+  </div>
 })
+
+Home.layout = Layout

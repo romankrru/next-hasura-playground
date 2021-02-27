@@ -1,15 +1,24 @@
 import 'cross-fetch'
 import '../styles/globals.css'
+import { FC, Fragment, ReactElement } from 'react'
 import { ApolloProvider } from '@apollo/react-hooks'
-import type { AppProps } from 'next/app'
+import { NextPage } from 'next'
 import { useApollo } from 'lib/apolloClient'
 
-export default function App({ Component, pageProps }: AppProps) {
+type AppWithLayoutProps = {
+  Component: NextPage & {layout?: FC}
+  pageProps: any
+}
+
+export default function App({ Component, pageProps }: AppWithLayoutProps) {
   const apolloClient = useApollo(pageProps.initialApolloState)
+  const Layout = Component.layout || ((props: {children: ReactElement}) => <Fragment>{props.children}</Fragment>)
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   )
 }
